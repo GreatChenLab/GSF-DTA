@@ -1,4 +1,4 @@
-# GSF-DTA: An Innovative Graph-Sequence Fusion Framework for Drug-Target Affinity Prediction
+# GSF-DTA
 ![Figure 1](https://github.com/user-attachments/assets/91ab38b7-1b1c-4056-b66c-acf050306c5f)
 
 ## Directory Structure
