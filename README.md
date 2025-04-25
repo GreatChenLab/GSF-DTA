@@ -59,7 +59,7 @@ pip install torch_geometric==2.0.4 torch-scatter==2.0.9 torch-sparse==0.6.17 tor
 pip install rdkit-pypi==2023.3.3 biopython==1.79 pandas==1.3.3 scipy==1.7.1 requests==2.26.0 tqdm==4.64.0 numpy==1.21.2
 ```
 ### 2. Download AlphaFold Structures
-The model automatically downloads PDB files from the AlphaFold database. Ensure network connectivity.
+The model automatically downloads PDB files from the AlphaFold database. Please ensure network connectivity.
 
  ### 3. Train the Model
 
