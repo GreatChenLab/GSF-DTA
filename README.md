@@ -32,20 +32,8 @@ numpy==1.21.2
 ```
 
 ## Data Preparation
+Download the dataset from the [TEFDTA GitHub repository](https://github.com/lizongquan01/TEFDTA/tree/master).
 
-```python
-data/Davis/DTA/
-├── train.csv
-└── test.csv
-
-data/KIBA/DTA/
-├── train.csv
-└── test.csv
-
-data/BindingDB/DTA/
-├── train.csv
-└── test.csv
-```
 ## Usage Steps
 ### 1. Environment Setup
 ```python
