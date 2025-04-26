@@ -53,7 +53,7 @@ The model automatically downloads PDB files from the AlphaFold database. Please 
 
 ```python
 # Run after training
-python test.py
+python train.py
 ```
 The training process includes early stopping (halts if validation loss does not decrease for 10 consecutive epochs) and saves the best model.
 ### 4. Test the Model
