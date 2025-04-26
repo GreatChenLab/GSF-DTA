@@ -6,12 +6,6 @@ ALPHAFOLD_DB_URL = "https://alphafold.ebi.ac.uk/files/AF-{}-F1-model_v4.pdb"
 
 
 def download_alphafold_structure(uniprot_id, save_dir):
-    """
-    从AlphaFold数据库下载蛋白质结构的PDB文件
-    :param uniprot_id: UniProt ID
-    :param save_dir: 保存PDB文件的目录
-    :return: 下载成功返回PDB文件路径，失败返回None
-    """
     os.makedirs(save_dir, exist_ok=True)
     pdb_url = ALPHAFOLD_DB_URL.format(uniprot_id)
     pdb_file_path = os.path.join(save_dir, f"{uniprot_id}.pdb")
