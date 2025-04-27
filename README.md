@@ -1,5 +1,6 @@
 # GSF-DTA
-![Figure 1](https://github.com/user-attachments/assets/2dcb2ecb-0e7d-4124-8b5e-94150f1cb5f7)
+![Uploading Figure 1.jpg…]()
+
 
 
 ## Directory Structure
