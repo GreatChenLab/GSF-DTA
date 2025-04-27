@@ -1,5 +1,6 @@
 # GSF-DTA
-![Uploading Figure 1.jpg…]()
+![Figure 1](https://github.com/user-attachments/assets/42cb567a-8c7d-479e-8e66-3f0abac300c5)
+
 
 
 
