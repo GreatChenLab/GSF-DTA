@@ -5,6 +5,7 @@ from model import GSF_DTA
 from metrics import rmse, pearson
 from tqdm import tqdm
 
+
 def train_model(model, train_loader, val_loader, optimizer, criterion, epochs=1000, patience=10):
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     model.to(device)
@@ -15,13 +16,15 @@ def train_model(model, train_loader, val_loader, optimizer, criterion, epochs=10
         model.train()
         total_loss = 0.0
         with tqdm(train_loader, desc=f'Epoch {epoch}/{epochs}') as pbar:
-            for prot_g, drug_g, labels in pbar:
+            for prot_g, drug_g, prot_seq, drug_seq, labels in pbar:
                 prot_g = prot_g.to(device)
                 drug_g = drug_g.to(device)
+                prot_seq = prot_seq.to(device)
+                drug_seq = drug_seq.to(device)
                 labels = labels.to(device).view(-1, 1)
 
                 optimizer.zero_grad()
-                outputs = model(prot_g.x, prot_g.edge_index, drug_g.x, drug_g.edge_index)
+                outputs = model(prot_g.x, prot_g.edge_index, drug_g.x, drug_g.edge_index, prot_seq, drug_seq)
                 loss = criterion(outputs, labels)
                 loss.backward()
                 optimizer.step()
@@ -48,18 +51,21 @@ def train_model(model, train_loader, val_loader, optimizer, criterion, epochs=10
     model.load_state_dict(torch.load('best_davis_model.pth'))
     return model
 
+
 def evaluate_model(model, data_loader, device, criterion):
     model.eval()
     preds = []
     labels = []
     total_loss = 0.0
     with torch.no_grad():
-        for prot_g, drug_g, label in data_loader:
+        for prot_g, drug_g, prot_seq, drug_seq, label in data_loader:
             prot_g = prot_g.to(device)
             drug_g = drug_g.to(device)
+            prot_seq = prot_seq.to(device)
+            drug_seq = drug_seq.to(device)
             label = label.to(device).view(-1, 1)
 
-            outputs = model(prot_g.x, prot_g.edge_index, drug_g.x, drug_g.edge_index)
+            outputs = model(prot_g.x, prot_g.edge_index, drug_g.x, drug_g.edge_index, prot_seq, drug_seq)
             total_loss += criterion(outputs, label).item()
 
             preds.extend(outputs.cpu().numpy())
